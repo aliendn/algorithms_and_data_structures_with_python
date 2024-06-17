@@ -29,6 +29,15 @@ class UnionFind:
     def count_components(self):
         return self.count
 
+    def get_components(self):
+        components = {}
+        for i in range(len(self.parent)):
+            root = self.find(i)
+            if root not in components:
+                components[root] = set()
+            components[root].add(i)
+        return components
+
 if __name__ == "__main__":
     import sys
     input = sys.stdin.read
@@ -47,3 +56,7 @@ if __name__ == "__main__":
             print(f"{p} {q}")
 
     print(f"Number of connected components: {uf.count_components()}")
+    print("Connected components:")
+    components = uf.get_components()
+    for comp in components.values():
+        print(comp)
