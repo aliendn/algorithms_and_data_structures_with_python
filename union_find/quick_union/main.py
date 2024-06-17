@@ -35,10 +35,12 @@ class QuickUnionUF:
         return components
 
 if __name__ == "__main__":
-    import sys
-    input = sys.stdin.read
+    import os
 
-    data = input().split()
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tinyUF.txt')
+    with open(file_path, 'r') as file:
+        data = file.read().split()
+
     N = int(data[0])
     uf = QuickUnionUF(N)
 

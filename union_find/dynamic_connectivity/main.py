@@ -38,11 +38,14 @@ class UnionFind:
             components[root].add(i)
         return components
 
+# READ THE FILE DIRECTLY
 if __name__ == "__main__":
-    import sys
-    input = sys.stdin.read
+    import os
 
-    data = input().split()
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tinyUF.txt')
+    with open(file_path, 'r') as file:
+        data = file.read().split()
+
     N = int(data[0])
     uf = UnionFind(N)
 
@@ -60,3 +63,27 @@ if __name__ == "__main__":
     components = uf.get_components()
     for comp in components.values():
         print(comp)
+
+# READ WITH python3 main.py > tinyUF.txt
+# if __name__ == "__main__":
+#     import sys
+#     input = sys.stdin.read
+#
+#     data = input().split()
+#     N = int(data[0])
+#     uf = UnionFind(N)
+#
+#     index = 1
+#     while index < len(data):
+#         p = int(data[index])
+#         q = int(data[index + 1])
+#         index += 2
+#         if not uf.connected(p, q):
+#             uf.union(p, q)
+#             print(f"{p} {q}")
+#
+#     print(f"Number of connected components: {uf.count_components()}")
+#     print("Connected components:")
+#     components = uf.get_components()
+#     for comp in components.values():
+#         print(comp)
